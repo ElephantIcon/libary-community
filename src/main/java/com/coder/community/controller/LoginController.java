@@ -66,7 +66,7 @@ public class LoginController implements CommunityConstant {
     }
 
     // http://localhost:8080/community/activation/101/code
-    @RequestMapping(path = "activation/{userId}/{code}", method = RequestMethod.GET)
+    @RequestMapping(path = "/activation/{userId}/{code}", method = RequestMethod.GET)
     public String activation(Model model, @PathVariable("userId") int userId, @PathVariable("code") String code) {
 
         int result = userService.activation(userId, code);
@@ -82,7 +82,7 @@ public class LoginController implements CommunityConstant {
         return "/site/operate-result";
     }
 
-    @RequestMapping(path = "kaptcha", method = RequestMethod.GET)
+    @RequestMapping(path = "/kaptcha", method = RequestMethod.GET)
     public void getKaptcha(HttpServletResponse response, HttpSession session) {
         // 生成验证码
         String text = kaptcharProducer.createText();
@@ -100,7 +100,7 @@ public class LoginController implements CommunityConstant {
         }
     }
 
-    @RequestMapping(path = "login", method = RequestMethod.POST)
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(String username, String password, String code, boolean rememberMe,
                       Model model, HttpSession session, HttpServletResponse response) {
         // 查查验证码
@@ -126,7 +126,7 @@ public class LoginController implements CommunityConstant {
         }
     }
 
-    @RequestMapping(path = "logout", method = RequestMethod.GET)
+    @RequestMapping(path = "/logout", method = RequestMethod.GET)
     public String logout(@CookieValue("ticket") String ticket) {
         userService.logout(ticket);
         return "redirect:/login";

@@ -9,7 +9,7 @@ public class Page {
     private int current = 1;
     // 显示上限
     private int limit = 10;
-    // 数据总量（计算总页数）
+    // 数据总量（用于计算总页数）
     private int rows;
     // 查询路径（复用分页的链接）
     private String path;
@@ -55,7 +55,7 @@ public class Page {
 
     /**
      * 获取当前页的起始行
-     * @return
+     * @return 起始行
      */
     public int getOffset() {
         // current * limit - limit

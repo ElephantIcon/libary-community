@@ -31,6 +31,10 @@ public class ServiceLogAspect {
     public void before(JoinPoint joinPoint) {
         // 用户[1, 2, 3, 4] 在[xxx]，访问[com.coder.community.service.xxx()].
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (attributes == null) {
+            return;
+        }
+        // EventConsumer有可能也会调controller,这时attributes会为空。所以做一个判断
         HttpServletRequest request = attributes.getRequest();
         String ip = request.getRemoteHost();
         String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());

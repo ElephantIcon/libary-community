@@ -3,6 +3,8 @@ package com.coder.community.util;
 import com.coder.community.entity.User;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.Executors;
+
 /**
  * 持有用户对象，用于代替session对象
  */
